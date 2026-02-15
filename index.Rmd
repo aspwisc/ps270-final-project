@@ -1,6 +1,6 @@
 ---
 title: "PS270 Final Project"
-author: "Your Name Here"
+author: "Amira Pierotti"
 description: "My final project"
 output:
   distill::distill_article:
@@ -11,4 +11,4 @@ output:
 
 ## Project thoughts
 
-I am interested in exploring data related to...
+I am interested in exploring data related to maternal and birthing parental mortality in the United States. Specifically, I would like to study the change in mortality and morbidity in each state since the Supreme Court ruling on Dobbs v. Jackson.
