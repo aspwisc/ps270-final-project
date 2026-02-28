@@ -11,4 +11,14 @@ output:
 
 ## Project thoughts
 
-I am interested in exploring data related to maternal and birthing parental mortality in the United States. Specifically, I would like to study the change in mortality and morbidity in each state since the Supreme Court ruling on Dobbs v. Jackson.
+I am interested in exploring data related to the change in accessibility of abortion care in the United States after the 2022 Supreme Court ruling in Dobbs v. Jackson. I became an abortion doula in CT after the ruling and a sizeable portion of the patients were from states that had criminalized abortion after the overturn of Roe v. Wade.
+
+## Project Milestone 2
+
+```{r}
+library(tidyverse)
+read.csv("data.csv")
+glimpse("data.csv")
+```
+
+Does the repeal of federal abortion protections increase the average distance needed for both states with total abortion bans as well as partial bans? I plan on examining the mean distance of travel to the nearest health center that offers abortion services for each county in states with total or partial abortion bans before and after a state’s total or partial abortion ban came into effect. I hypothesize that states that enacted either a partial or total abortion ban after the 2022 Supreme Court ruling of Dobbs v. Jackson will have an increased average travel distance to the nearest abortion. My data is comprised of monthly snapshots of the nearest abortion provider for each county in the United States from 2009-2025. My explanatory variable of interest will be a newly created variable called “post_dobbs_restriction” where it will be valued at = 1 if the state has enacted a restrictive abortion law after the Dobbs ruling and = 0 if the monthly snapshot is from before the restriction was enacted. To create this variable, I will first have to review the dates that these laws were enacted, as some states had trigger laws while others were enacted days or months after the Dobbs decision. The outcome variable is the average distance measured in miles to the nearest abortion provider in each county. If my hypothesis is correct, states that enacted such restrictions will have a measurable increase in average distance to the nearest provider, while states that did not enact such laws will have no or a lesser increase in average distance. If my hypothesis is incorrect, then the average distance will be either equal to or lesser to the change in distance when compared to states that did not enact restrictive abortion bans.
