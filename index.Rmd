@@ -22,3 +22,78 @@ data <- read.csv("data.csv")
 head(data)
 ```
 
+## Project Milestone 3
+
+For this Milestone, I filtered the data by states with total or partial abortion bans. I determined which states qualified for this label by using reports from the Guttmacher Institute, a sexual and reproductive rights non-profit that focuses on research and education. I have selected all states that ban abortion prior to viability, currently around 22-24 weeks of gestation. Alabama, Arkansas, Idaho, Indiana, Kentucky, Louisiana, Mississippi, North Dakoda, Oklahoma, South Dakoda, Tennessee, Texas, and West Virginia have total abortion bans. Florida, Georgia, Iowa, Nebraska, Ohio, South Carolina, and Utah have partial abortion bans ranging from 6-20 week bans. Wisconsin had a trigger abortion law that criminalized all abortions which came into effect after *Dobbs v. Jackson*, but has since been overturned by the Wisconsin Supreme Court. Wyoming passed a total abortion ban in 2023 that was under a judicial injuction until it was overturned in 2026; however, as of March, 2026, a 6-week ban is in effect. The data set does not include 2026 data and as such, is not included in this analysis.
+
+```{r}
+data <- data|>
+  select(-origin_fips_code, -origin_population, -monthlydate, -dest_fips_code, -dest_loc_type, -distance_type, -dest_loc_numfacs, -dest_asp) |>
+  filter(origin_state %in% c("AL", "AR", "FL", "GA", "ID", "IN", "IA", "KY", "LA", "MS", "NE", "NC", "ND", "OK", "SC","SD", "TN", "TX", "UT", "WV", "WI"))
+
+head(data)
+```
+
+Next, I created new variables called "pre_dobbs" and "post_ban" that state if the snapshot 
+occured before or after *Dobbs* was decided or if it occurred before or after the post-Dobbs ban was enacted. To determine when a post-Dobbs ban went into effect, I used data collected by the  Center for Reproductive Rights.
+
+```{r}
+data <- data|>
+  mutate(date = as.Date(with(data, paste(year, month, "01", sep = "-")), "%Y-%m-%d")) |>
+  mutate(pre_dobbs = if_else(date < as.Date("2022-06-01"), "Pre-Dobbs", "Post-Dobbs"),
+         post_ban = if_else(origin_state == "AL" & date > as.Date("2022-06-01") | 
+                            origin_state == "AR" & date > as.Date("2022-06-01") | 
+                            origin_state == "FL" & date > as.Date("2024-05-01") | 
+                            origin_state == "GA" & date > as.Date("2022-07-01") | 
+                            origin_state == "ID" & date > as.Date("2022-08-01") | 
+                            origin_state == "IN" & date > as.Date("2023-08-01") | 
+                            origin_state == "IA" & date > as.Date("2024-08-01") | 
+                            origin_state == "KY" & date > as.Date("2022-08-01") | 
+                            origin_state == "LA" & date > as.Date("2022-06-01") | 
+                            origin_state == "MS" & date > as.Date("2022-06-01") | 
+                            origin_state == "NE" & date > as.Date("2023-06-01") | 
+                            origin_state == "NC" & date > as.Date("2023-07-01") | 
+                            origin_state == "ND" & date > as.Date("2025-11-01") | 
+                            origin_state == "OK" & date > as.Date("2022-06-01") | 
+                            origin_state == "SC" & date == 
+                              between(date, as.Date("2022-06-01"), as.Date("2023-01-01")) | 
+                            origin_state == "SC" & date >= as.Date("2023-08-01") | 
+                            origin_state == "SD" & date > as.Date("2022-06-01") | 
+                            origin_state == "TN" & date > as.Date("2022-08-01") | 
+                            origin_state == "TX" & date > as.Date("2022-08-01") | 
+                            origin_state == "UT" & date > as.Date("2022-06-01") | 
+                            origin_state == "WV" & date > as.Date("2022-09-01") | 
+                            origin_state == "WI" & date == between(date,as.Date("2022-06-01"),
+                            as.Date("2023-09-01")), "Ban Enacted", "No Ban"))
+
+head(data)
+  
+  
+```
+
+
+The following is a graph depicting the average distance to the nearest abortion provider by state in the 2020s. Each state is depicted in a different color. However, my computer crashed when I tried to manually choose colors that looked more varied. I have also added a vertical line at June 2022, when Dobbs v. Jackson ruling was announced.
+
+```{r}
+library(ggplot2)
+
+data_2020s <-data |> filter (date > as.Date("2020-01-01")) |>
+  rename(State = origin_state)
+ggplot(data = data_2020s, mapping = aes(x = date,
+                     y = distance_origintodest, color = State)) +
+  geom_smooth(group = "State", method = "loess", se = FALSE) +
+  geom_vline(aes(xintercept = as.Date("2022-06-01"))) +
+  labs(x = "Date",
+       y = "Distance to Nearest Abortion Provider in Miles",
+       title = "Average Distance to Nearest Abortion Provider by State")
+  
+
+```
+
+
+
++ 
+  scale_color_manual(values = c(AL = "darkred", AR = "firebrick2", FL = "darkorange2", GA = "tan", IA = "goldenrod", ID = "gold1", IN = "lightgoldenrod", KY = "darkolivegreen2", LA = "forestgreen", MS = "darkolivegreen", NC = "turquoise4", ND = "cyan2", NE = "cadetblue1", OK = "royalblue1", SC = "darkslateblue", SD = "mediumpurple1", TN = "darkorchid3", TX = "magenta3", UT = "deeppink2", WI ="pink", WV = "saddlebrown")) 
+
+
+
