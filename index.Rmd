@@ -97,6 +97,7 @@ ban_change <- data |>
        subtitle = "Comparing Counties without Abortion Bans to Dobbs v. Jackson Bans")
 ban_change
 
+
 data |>
   group_by(ban_status) |>
   summarize(median(distance_origintodest)) |>
