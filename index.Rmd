@@ -7,41 +7,27 @@ output:
     self_contained: false
 ---
 
+## Final Project Report
+
+Does the repeal of federal abortion protections increase the average distance needed for both states with total abortion bans as well as partial bans? Through this project, I will examine the average distance of travel to the nearest health center that offers abortion services for each county in states with total or partial abortion bans before and after a state’s total or partial abortion ban came into effect. In 2022, the United States Supreme Court ruling in *Dobbs v. Jackson* held that the legality of abortion should be determined by the states. My data, the Myers Abortion Facility Database, is comprised of monthly snapshots of the nearest abortion provider for each county in the United States from 2015-2025. An increase in distance to the nearest abortion provider means a decrease in accessibility. Those seeking abortion care may need to take off work, get funds for travel, find childcare, and find and purchase accomodations in another city. I worked as an abortion doula in Connecticut where I cared for multiple out-of-state patients who had to fly to the East Coast from Southern states that enacted post-*Dobbs* abortion bans. I seek to determine if there is a quantative answer if abortion bans caused a mean increase in distance to the nearest abortion provider. I hypothesize that states that enacted either a partial or total abortion ban after the *Dobbs v. Jackson* ruling will have an increased average travel distance to the nearest abortion provider. 
 
 
-## Project thoughts
+The Myers Abortion Facility Database was created by Caitlin Myers and is comprised of "[u]nrestricted data include a county-by-month panel of travel distances to the nearest U.S. abortion provider from January 2009 through July 2025." This project examines data from the last decade, 2015 to 2025, in states that enacted abortion bans after the *Dobbs v. Jackson* ruling. The states are as follows: Alabama, Arkansas, Florida, Georgia, Iowa, Idaho, Indiana, Kentucky, Louisiana, Mississippi, North Carolina, North Dakota, Nebraska, Oklahoma, South Carolina, South Dakota, Tennessee, Texas, Utah, Wisconsin, and West Virgina. My explanatory variable I created new variables called "post_ban" where "no ban" means that the data was recorded before the origin state enacted a post-*Dobbs* ban or in a state that did not enact an abortion ban and will be called "ban enacted" if the data is from an origin state that has enacted a post-*Dobbs* abortion ban. To determine when a post-Dobbs ban went into effect, I used data collected by the  Center for Reproductive Rights. To create this variable, I first had to review the dates that these laws were enacted, as some states had trigger laws while others were enacted days or months after the Dobbs decision. I coded this for each of the 21 states that enacted abortion bans after the *Dobbs* ruling. The outcome variable is the average distance measured in miles to the nearest abortion provider in each county.
 
-I am interested in exploring data related to the change in accessibility of abortion care in the United States after the 2022 Supreme Court ruling in Dobbs v. Jackson. I became an abortion doula in CT after the ruling and a sizeable portion of the patients were from states that had criminalized abortion after the overturn of Roe v. Wade.
-
-## Project Milestone 2
-Does the repeal of federal abortion protections increase the average distance needed for both states with total abortion bans as well as partial bans? I plan on examining the mean distance of travel to the nearest health center that offers abortion services for each county in states with total or partial abortion bans before and after a state’s total or partial abortion ban came into effect. I hypothesize that states that enacted either a partial or total abortion ban after the 2022 Supreme Court ruling of Dobbs v. Jackson will have an increased average travel distance to the nearest abortion. My data is comprised of monthly snapshots of the nearest abortion provider for each county in the United States from 2009-2025. My explanatory variable of interest will be a newly created variable called “post_dobbs_restriction” where it will be valued at = 1 if the state has enacted a restrictive abortion law after the Dobbs ruling and = 0 if the monthly snapshot is from before the restriction was enacted. To create this variable, I will first have to review the dates that these laws were enacted, as some states had trigger laws while others were enacted days or months after the Dobbs decision. The outcome variable is the average distance measured in miles to the nearest abortion provider in each county. If my hypothesis is correct, states that enacted such restrictions will have a measurable increase in average distance to the nearest provider, while states that did not enact such laws will have no or a lesser increase in average distance. If my hypothesis is incorrect, then the average distance will be either equal to or lesser to the change in distance when compared to states that did not enact restrictive abortion bans.
 
 ```{r}
 library(tidyverse)
 data <- read.csv("data.csv")
 head(data)
-```
 
-## Project Milestone 3
-
-For this Milestone, I filtered the data by states with total or partial abortion bans. I determined which states qualified for this label by using reports from the Guttmacher Institute, a sexual and reproductive rights non-profit that focuses on research and education. I have selected all states that ban abortion prior to viability, currently around 22-24 weeks of gestation. Alabama, Arkansas, Idaho, Indiana, Kentucky, Louisiana, Mississippi, North Dakoda, Oklahoma, South Dakoda, Tennessee, Texas, and West Virginia have total abortion bans. Florida, Georgia, Iowa, Nebraska, Ohio, South Carolina, and Utah have partial abortion bans ranging from 6-20 week bans. Wisconsin had a trigger abortion law that criminalized all abortions which came into effect after *Dobbs v. Jackson*, but has since been overturned by the Wisconsin Supreme Court. Wyoming passed a total abortion ban in 2023 that was under a judicial injuction until it was overturned in 2026; however, as of March, 2026, a 6-week ban is in effect. The data set does not include 2026 data and as such, is not included in this analysis.
-
-```{r}
 data <- data|>
   select(-origin_fips_code, -origin_population, -monthlydate, -dest_fips_code, -dest_loc_type, -distance_type, -dest_loc_numfacs, -dest_asp) |>
   filter(origin_state %in% c("AL", "AR", "FL", "GA", "ID", "IN", "IA", "KY", "LA", "MS", "NE", "NC", "ND", "OK", "SC","SD", "TN", "TX", "UT", "WV", "WI"))
 
-head(data)
-```
-
-Next, I created new variables called "pre_dobbs" and "post_ban" that state if the snapshot 
-occured before or after *Dobbs* was decided or if it occurred before or after the post-Dobbs ban was enacted. To determine when a post-Dobbs ban went into effect, I used data collected by the  Center for Reproductive Rights.
-
-```{r}
 data <- data|>
   mutate(date = as.Date(with(data, paste(year, month, "01", sep = "-")), "%Y-%m-%d")) |>
   mutate(pre_dobbs = if_else(date < as.Date("2022-06-01"), "Pre-Dobbs", "Post-Dobbs"),
-         post_ban = if_else(origin_state == "AL" & date > as.Date("2022-06-01") | 
+         ban_status = if_else(origin_state == "AL" & date > as.Date("2022-06-01") | 
                             origin_state == "AR" & date > as.Date("2022-06-01") | 
                             origin_state == "FL" & date > as.Date("2024-05-01") | 
                             origin_state == "GA" & date > as.Date("2022-07-01") | 
@@ -65,35 +51,60 @@ data <- data|>
                             origin_state == "WV" & date > as.Date("2022-09-01") | 
                             origin_state == "WI" & date == between(date,as.Date("2022-06-01"),
                             as.Date("2023-09-01")), "Ban Enacted", "No Ban"))
-
-head(data)
-  
-  
 ```
 
-
-The following is a graph depicting the average distance to the nearest abortion provider by state in the 2020s. Each state is depicted in a different color. However, my computer crashed when I tried to manually choose colors that looked more varied. I have also added a vertical line at June 2022, when Dobbs v. Jackson ruling was announced.
+How far does the average person need to travel to receive an abortion in the United States? The dataset takes snapshots of the average distance to the nearest abortion provider for each county in the United States for each month from 2015-2025, providing thousands of data points. I first plot through a histogram that counts how many times the nearest provider per county in affected states is within a certain mile range. This allows us to see that the majority of counties had an abortion provider within 125 miles during this time.
 
 ```{r}
-library(ggplot2)
+data <- data |>
+  filter(date >= "2015-01-01")
+mean_dist <- data |>
+  ggplot(mapping=aes(x=distance_origintodest)) +
+  geom_histogram() +
+  labs(x ="Distance in Miles to Nearest Abortion Provider",
+       y = "Number of Counties",
+       title = "Mean Distance to the Nearest Abortion Provider for Counties from 2015-2025",
+       subtitle = "For Counties in States with Post-Dobbs Bans From Every Month")
 
-data_2020s <-data |> filter (date > as.Date("2020-01-01")) |>
-  rename(State = origin_state)
-ggplot(data = data_2020s, mapping = aes(x = date,
-                     y = distance_origintodest, color = State)) +
-  geom_smooth(group = "State", method = "loess", se = FALSE) +
-  geom_vline(aes(xintercept = as.Date("2022-06-01"))) +
-  labs(x = "Date",
-       y = "Distance to Nearest Abortion Provider in Miles",
-       title = "Average Distance to Nearest Abortion Provider by State")
-  
-
+mean_dist
 ```
 
+If my hypothesis is correct, states that enacted such restrictions will have a measurable increase in average distance to the nearest provider, while states that did not enact such laws will have no or a lesser increase in average distance. If my hypothesis is incorrect, then the average distance will be either equal to or lesser to the change in distance when compared to states that did not enact restrictive abortion bans. This will be determined by running a linear regression model which will use the available data to estimate how a change in abortion ban status will change the mean distance to the nearest abortion provider nation-wide. The model will produce two values: an intercept and a slope. The intercept is the estimated average distance to the nearest abortion provider when a post-*Dobbs* abortion ban has been enacted. The slope coefficient is the change in the distance to the nearest abortion provider for every unit increase. As the state of abortion bans is a binary variable, this roughly translates to the difference between the distance to the nearest provider when such a ban has and has not been enacted. If my hypothesis is correct, the slope coefficient for the variable "No Ban" will be negative as the estimated distance will decrease.
 
 
-+ 
-  scale_color_manual(values = c(AL = "darkred", AR = "firebrick2", FL = "darkorange2", GA = "tan", IA = "goldenrod", ID = "gold1", IN = "lightgoldenrod", KY = "darkolivegreen2", LA = "forestgreen", MS = "darkolivegreen", NC = "turquoise4", ND = "cyan2", NE = "cadetblue1", OK = "royalblue1", SC = "darkslateblue", SD = "mediumpurple1", TN = "darkorchid3", TX = "magenta3", UT = "deeppink2", WI ="pink", WV = "saddlebrown")) 
+```{r}
+library(knitr)
+library(broom)
+regression <- lm(distance_origintodest ~ ban_status, data = data)
+tidy(regression) |>
+  knitr::kable(digits = 2, col.names = c("Term", "Coefficient", "Standard Error", "Statistic", "P-Value"))
+```
 
+The linear model regression results in the above data. The intercept is 210.32, meaning that when the value of "No Ban" is zero, or in other words, when a post-*Dobbs* ban is in place, the mean distance to the nearest abortion provider is 210.32 miles. As the value of the variable ban_status increases by one unit, or in this case goes from "No Ban" to "Ban Enacted," the distance will decrease to the nearest abortion provider will decrease by 120.54 miles. Or, in other words: the average distance from any United States county to the nearest abortion provider is 89.78 miles for counties in states that have not enacted an abortion ban after the *Dobbs v. Jackson* ruling and 210.32 miles for counties in states that have enacted such a ban. 
 
+These values are statistically significant as the p-value is 0 for both the intercept and slope. The p-value is the probability of observing data more extreme than our data, assuming that there is no relationships between variables. This assumption is called a null hypothesis. A p-value of 0 means that data this extreme would occur in 0% of all possible cases if the null is true, meaning there is no relationship between variables. This is considered a highly significant figure, making it highly improbable for this data to occur by chance.
 
+The difference in average distance to the nearest abortion provider can be visualized through a boxplot. The following graph shows the median distance to the nearest abortion provider as well as the interquartile range, which shows the spread of the middle 50% of values in a data group. This graph reveals that the the median distance to the nearest abortion provider in counties under the jurisdiction of a post-*Dobbs* ban is 159.62 miles, while 50% of all such counties are between 140 and 300 miles to the closest abortion provider. On the other hand, counties not under the jurisdiction of a post-*Dobbs* ban have a median of 63.99 miles and a much smaller interquartile range of approximately 50 to 100 miles. The counties in states without post-*Dobbs* bans have a greater quantity and spread of outliers, with some travel distances spanning up to over 800 miles away.
+
+```{r}
+ban_change <- data |>
+  ggplot(mapping = aes(x = ban_status,
+                       y = distance_origintodest)) +
+  geom_boxplot() +
+  labs(x = "Status of Abortion Ban",
+       y = "Nearest Abortion Provider in Miles",
+       title = "Mean Distance to Nearest Abortion Provider in Miles",
+       subtitle = "Comparing Counties without Abortion Bans to Dobbs v. Jackson Bans")
+ban_change
+
+data |>
+  group_by(ban_status) |>
+  summarize(median(distance_origintodest)) |>
+  knitr::kable(digits = 2, col.names = c("Ban Status", "Median Distance to Nearest Abortion Provider"))
+```
+
+Determining causality means estimating a counterfactual, a reality that does not exist. As it is impossible to know the distance to the nearest abortion provider in states that enacted post-*Dobbs* bans if they had not enacted said bans, we must make an inference.Hence, the use of a before-and-after design here: comparing the distance to the nearest provider before the treatment of the ban was enacted. This is one widely accepted form of observational study meant to mimic a randomized control study. As such, we can assume a causal inference.
+
+In conclusion, states that enacted an abortion ban after the SCOTUS ruling of *Dobbs v. Jackson* had a significant increase in the average distance to the nearest abortion provider. The linear regression model noted a 120.54 mile increase after the bans were enacted. The before-and-after design ensures a causal inference and the p-value of 0 is a highly significant figure, meaning there is little possibility that this occured by chance. I cannot think of any plausible confounder that would cause both abortion bans to be enacted and the average distance to the nearest abortion provider to increase. However, the analysis could be complicated by turning it into a difference in differences design, comparing the change in average distance before and after *Dobbs* for states that both did and did not enact bans. I could not figure out how to cleanly manipulate this data to set up this design. Another variable that may influence this analysis is the geography of states with abortion bans: states both with and without abortion bans tend to be clustered together. I am curious how this would influence the results.
+
+Note: David recommended that I note that I added the date that post-*Dobbs* abortion bans for each of the 21 states by hand as a fulfillment for the "above and beyond" point. Additionally, I taught myself how to convert the dates from separate "month" and "year" columns prior to learning it in class.

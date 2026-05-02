@@ -1,0 +1,150 @@
+---
+title: "final outtakes"
+output: html_document
+date: "2026-05-02"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+## Project thoughts
+
+I am interested in exploring data related to the change in accessibility of abortion care in the United States after the 2022 Supreme Court ruling in Dobbs v. Jackson. I became an abortion doula in CT after the ruling and a sizeable portion of the patients were from states that had criminalized abortion after the overturn of Roe v. Wade.
+
+## Project Milestone 2
+Does the repeal of federal abortion protections increase the average distance needed for both states with total abortion bans as well as partial bans? I plan on examining the mean distance of travel to the nearest health center that offers abortion services for each county in states with total or partial abortion bans before and after a state’s total or partial abortion ban came into effect. I hypothesize that states that enacted either a partial or total abortion ban after the 2022 Supreme Court ruling of Dobbs v. Jackson will have an increased average travel distance to the nearest abortion. My data is comprised of monthly snapshots of the nearest abortion provider for each county in the United States from 2009-2025. My explanatory variable of interest will be a newly created variable called “post_dobbs_restriction” where it will be valued at = 1 if the state has enacted a restrictive abortion law after the Dobbs ruling and = 0 if the monthly snapshot is from before the restriction was enacted. To create this variable, I will first have to review the dates that these laws were enacted, as some states had trigger laws while others were enacted days or months after the Dobbs decision. The outcome variable is the average distance measured in miles to the nearest abortion provider in each county. If my hypothesis is correct, states that enacted such restrictions will have a measurable increase in average distance to the nearest provider, while states that did not enact such laws will have no or a lesser increase in average distance. If my hypothesis is incorrect, then the average distance will be either equal to or lesser to the change in distance when compared to states that did not enact restrictive abortion bans.
+
+```{r}
+library(tidyverse)
+data <- read.csv("data.csv")
+head(data)
+```
+
+## Project Milestone 3
+
+For this Milestone, I filtered the data by states with total or partial abortion bans. I determined which states qualified for this label by using reports from the Guttmacher Institute, a sexual and reproductive rights non-profit that focuses on research and education. I have selected all states that ban abortion prior to viability, currently around 22-24 weeks of gestation. Alabama, Arkansas, Idaho, Indiana, Kentucky, Louisiana, Mississippi, North Dakoda, Oklahoma, South Dakoda, Tennessee, Texas, and West Virginia have total abortion bans. Florida, Georgia, Iowa, Nebraska, Ohio, South Carolina, and Utah have partial abortion bans ranging from 6-20 week bans. Wisconsin had a trigger abortion law that criminalized all abortions which came into effect after *Dobbs v. Jackson*, but has since been overturned by the Wisconsin Supreme Court. Wyoming passed a total abortion ban in 2023 that was under a judicial injuction until it was overturned in 2026; however, as of March, 2026, a 6-week ban is in effect. The data set does not include 2026 data and as such, is not included in this analysis.
+
+```{r}
+data <- data|>
+  select(-origin_fips_code, -origin_population, -monthlydate, -dest_fips_code, -dest_loc_type, -distance_type, -dest_loc_numfacs, -dest_asp) 
+ban_states <- data |>
+  filter(origin_state %in% c("AL", "AR", "FL", "GA", "ID", "IN", "IA", "KY", "LA", "MS", "NE", "NC", "ND", "OK", "SC","SD", "TN", "TX", "UT", "WV", "WI"))
+
+head(data)
+```
+
+Next, I created new variables called "pre_dobbs" and "post_ban" that state if the snapshot 
+occured before or after *Dobbs* was decided or if it occurred before or after the post-Dobbs ban was enacted. To determine when a post-Dobbs ban went into effect, I used data collected by the  Center for Reproductive Rights.
+
+```{r}
+data <- data|>
+  mutate(date = as.Date(with(data, paste(year, month, "01", sep = "-")), "%Y-%m-%d")) |>
+  mutate(pre_dobbs = if_else(date < as.Date("2022-06-01"), "Pre-Dobbs", "Post-Dobbs"),
+         post_ban = if_else(origin_state == "AL" & date > as.Date("2022-06-01") | 
+                            origin_state == "AR" & date > as.Date("2022-06-01") | 
+                            origin_state == "FL" & date > as.Date("2024-05-01") | 
+                            origin_state == "GA" & date > as.Date("2022-07-01") | 
+                            origin_state == "ID" & date > as.Date("2022-08-01") | 
+                            origin_state == "IN" & date > as.Date("2023-08-01") | 
+                            origin_state == "IA" & date > as.Date("2024-08-01") | 
+                            origin_state == "KY" & date > as.Date("2022-08-01") | 
+                            origin_state == "LA" & date > as.Date("2022-06-01") | 
+                            origin_state == "MS" & date > as.Date("2022-06-01") | 
+                            origin_state == "NE" & date > as.Date("2023-06-01") | 
+                            origin_state == "NC" & date > as.Date("2023-07-01") | 
+                            origin_state == "ND" & date > as.Date("2025-11-01") | 
+                            origin_state == "OK" & date > as.Date("2022-06-01") | 
+                            origin_state == "SC" & date == 
+                              between(date, as.Date("2022-06-01"), as.Date("2023-01-01")) | 
+                            origin_state == "SC" & date >= as.Date("2023-08-01") | 
+                            origin_state == "SD" & date > as.Date("2022-06-01") | 
+                            origin_state == "TN" & date > as.Date("2022-08-01") | 
+                            origin_state == "TX" & date > as.Date("2022-08-01") | 
+                            origin_state == "UT" & date > as.Date("2022-06-01") | 
+                            origin_state == "WV" & date > as.Date("2022-09-01") | 
+                            origin_state == "WI" & date == between(date,as.Date("2022-06-01"),
+                            as.Date("2023-09-01")), "Ban Enacted", "No Ban"))
+
+
+ban_states <- data |>
+  filter(origin_state %in% c("AL", "AR", "FL", "GA", "ID", "IN", "IA", "KY", "LA", "MS", "NE", "NC", "ND", "OK", "SC","SD", "TN", "TX", "UT", "WV", "WI"))
+head(ban_states)
+  
+  
+```
+
+
+The following is a graph depicting the average distance to the nearest abortion provider by state in the 2020s. Each state is depicted in a different color. However, my computer crashed when I tried to manually choose colors that looked more varied. I have also added a vertical line at June 2022, when Dobbs v. Jackson ruling was announced.
+
+
+
+
+```{r}
+head(data)
+
+avg_distance_graph <- ban_states |>
+  group_by(origin_state, date) |>
+  summarize(mean_dist = mean(distance_origintodest))
+
+data_2020s <- avg_distance_graph |> filter (date > as.Date("2020-01-01")) |>
+  rename(State = origin_state)
+ggplot(data = data_2020s, mapping = aes(x = date,
+                     y = mean_dist, color = State)) +
+  geom_smooth(group = "State", se = FALSE, alpha = 0.25) + 
+    scale_color_manual(values = c(AL = "darkred", AR = "firebrick2", FL = "darkorange2", GA = "tan", IA = "goldenrod", ID = "gold1", IN = "lightgoldenrod", KY = "darkolivegreen2", LA = "forestgreen", MS = "darkolivegreen", NC = "turquoise4", ND = "cyan2", NE = "cadetblue1", OK = "royalblue1", SC = "darkslateblue", SD = "mediumpurple1", TN = "darkorchid3", TX = "magenta3", UT = "deeppink2", WI ="pink", WV = "saddlebrown")) +
+  geom_vline(aes(xintercept = as.Date("2022-06-01"))) +
+  labs(x = "Date",
+       y = "Distance to Nearest Abortion Provider in Miles",
+       title = "Average Distance to Nearest Abortion Provider by State")
+
+```
+
+
+
+Histogram with diff distances 
+Boxplot with mean distance for states with ban vs states without
+regression
+
+
+
+```{r}
+data <- data |>
+  filter(date >= "2015-01-01")
+mean_dist <- data |>
+  ggplot(mapping=aes(x=distance_origintodest)) +
+  geom_histogram() +
+  labs(x ="Distance in Miles to Nearest Abortion Provider",
+       y = "Number of Counties",
+       title = "Mean Distance to the Nearest Abortion Provider for Each County in the U.S.",
+       subtitle = "From Every Month between 2015-2025")
+
+mean_dist
+
+```
+
+
+
+
+
+```{r}
+ban_change <- data |>
+  ggplot(mapping = aes(x = post_ban,
+                       y = distance_origintodest)) +
+  geom_boxplot() +
+  labs(x = "Status of Abortion Ban",
+       y = "Nearest Abortion Provider in Miles",
+       title = "Mean Distance to Nearest Abortion Provider in Miles",
+       subtitle = "Comparing Counties without Abortion Bans to Dobbs v. Jackson Bans")
+ban_change
+```
+
+
+```{r}
+regression <- lm(distance_origintodest ~ post_ban, data = data)
+
+regression
+
+```
