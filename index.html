@@ -116,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["data.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.30/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["data.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-2-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.30/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1544,10 +1544,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<h2 id="project-thoughts">Project thoughts</h2>
-<p>I am interested in exploring data related to the change in accessibility of abortion care in the United States after the 2022 Supreme Court ruling in Dobbs v. Jackson. I became an abortion doula in CT after the ruling and a sizeable portion of the patients were from states that had criminalized abortion after the overturn of Roe v. Wade.</p>
-<h2 id="project-milestone-2">Project Milestone 2</h2>
-<p>Does the repeal of federal abortion protections increase the average distance needed for both states with total abortion bans as well as partial bans? I plan on examining the mean distance of travel to the nearest health center that offers abortion services for each county in states with total or partial abortion bans before and after a state’s total or partial abortion ban came into effect. I hypothesize that states that enacted either a partial or total abortion ban after the 2022 Supreme Court ruling of Dobbs v. Jackson will have an increased average travel distance to the nearest abortion. My data is comprised of monthly snapshots of the nearest abortion provider for each county in the United States from 2009-2025. My explanatory variable of interest will be a newly created variable called “post_dobbs_restriction” where it will be valued at = 1 if the state has enacted a restrictive abortion law after the Dobbs ruling and = 0 if the monthly snapshot is from before the restriction was enacted. To create this variable, I will first have to review the dates that these laws were enacted, as some states had trigger laws while others were enacted days or months after the Dobbs decision. The outcome variable is the average distance measured in miles to the nearest abortion provider in each county. If my hypothesis is correct, states that enacted such restrictions will have a measurable increase in average distance to the nearest provider, while states that did not enact such laws will have no or a lesser increase in average distance. If my hypothesis is incorrect, then the average distance will be either equal to or lesser to the change in distance when compared to states that did not enact restrictive abortion bans.</p>
+<h2 id="final-project-report">Final Project Report</h2>
+<p>Does the repeal of federal abortion protections increase the average distance needed for both states with total abortion bans as well as partial bans? Through this project, I will examine the average distance of travel to the nearest health center that offers abortion services for each county in states with total or partial abortion bans before and after a state’s total or partial abortion ban came into effect. In 2022, the United States Supreme Court ruling in <em>Dobbs v. Jackson</em> held that the legality of abortion should be determined by the states. My data, the Myers Abortion Facility Database, is comprised of monthly snapshots of the nearest abortion provider for each county in the United States from 2015-2025. An increase in distance to the nearest abortion provider means a decrease in accessibility. Those seeking abortion care may need to take off work, get funds for travel, find childcare, and find and purchase accomodations in another city. I worked as an abortion doula in Connecticut where I cared for multiple out-of-state patients who had to fly to the East Coast from Southern states that enacted post-<em>Dobbs</em> abortion bans. I seek to determine if there is a quantative answer if abortion bans caused a mean increase in distance to the nearest abortion provider. I hypothesize that states that enacted either a partial or total abortion ban after the <em>Dobbs v. Jackson</em> ruling will have an increased average travel distance to the nearest abortion provider.</p>
+<p>The Myers Abortion Facility Database was created by Caitlin Myers and is comprised of “[u]nrestricted data include a county-by-month panel of travel distances to the nearest U.S. abortion provider from January 2009 through July 2025.” This project examines data from the last decade, 2015 to 2025, in states that enacted abortion bans after the <em>Dobbs v. Jackson</em> ruling. The states are as follows: Alabama, Arkansas, Florida, Georgia, Iowa, Idaho, Indiana, Kentucky, Louisiana, Mississippi, North Carolina, North Dakota, Nebraska, Oklahoma, South Carolina, South Dakota, Tennessee, Texas, Utah, Wisconsin, and West Virgina. My explanatory variable I created new variables called “post_ban” where “no ban” means that the data was recorded before the origin state enacted a post-<em>Dobbs</em> ban or in a state that did not enact an abortion ban and will be called “ban enacted” if the data is from an origin state that has enacted a post-<em>Dobbs</em> abortion ban. To determine when a post-Dobbs ban went into effect, I used data collected by the Center for Reproductive Rights. To create this variable, I first had to review the dates that these laws were enacted, as some states had trigger laws while others were enacted days or months after the Dobbs decision. I coded this for each of the 21 states that enacted abortion bans after the <em>Dobbs</em> ruling. The outcome variable is the average distance measured in miles to the nearest abortion provider in each county.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
@@ -1582,40 +1581,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 4               17.5935 Travel (HERE API)                2    89495
 5               17.5935 Travel (HERE API)                2    89495
 6               17.5935 Travel (HERE API)                2    89495</code></pre>
-</div>
-<h2 id="project-milestone-3">Project Milestone 3</h2>
-<p>For this Milestone, I filtered the data by states with total or partial abortion bans. I determined which states qualified for this label by using reports from the Guttmacher Institute, a sexual and reproductive rights non-profit that focuses on research and education. I have selected all states that ban abortion prior to viability, currently around 22-24 weeks of gestation. Alabama, Arkansas, Idaho, Indiana, Kentucky, Louisiana, Mississippi, North Dakoda, Oklahoma, South Dakoda, Tennessee, Texas, and West Virginia have total abortion bans. Florida, Georgia, Iowa, Nebraska, Ohio, South Carolina, and Utah have partial abortion bans ranging from 6-20 week bans. Wisconsin had a trigger abortion law that criminalized all abortions which came into effect after <em>Dobbs v. Jackson</em>, but has since been overturned by the Wisconsin Supreme Court. Wyoming passed a total abortion ban in 2023 that was under a judicial injuction until it was overturned in 2026; however, as of March, 2026, a 6-week ban is in effect. The data set does not include 2026 data and as such, is not included in this analysis.</p>
-<div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>data</span> <span class='op'>&lt;-</span> <span class='va'>data</span><span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>origin_fips_code</span>, <span class='op'>-</span><span class='va'>origin_population</span>, <span class='op'>-</span><span class='va'>monthlydate</span>, <span class='op'>-</span><span class='va'>dest_fips_code</span>, <span class='op'>-</span><span class='va'>dest_loc_type</span>, <span class='op'>-</span><span class='va'>distance_type</span>, <span class='op'>-</span><span class='va'>dest_loc_numfacs</span>, <span class='op'>-</span><span class='va'>dest_asp</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>origin_state</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"AL"</span>, <span class='st'>"AR"</span>, <span class='st'>"FL"</span>, <span class='st'>"GA"</span>, <span class='st'>"ID"</span>, <span class='st'>"IN"</span>, <span class='st'>"IA"</span>, <span class='st'>"KY"</span>, <span class='st'>"LA"</span>, <span class='st'>"MS"</span>, <span class='st'>"NE"</span>, <span class='st'>"NC"</span>, <span class='st'>"ND"</span>, <span class='st'>"OK"</span>, <span class='st'>"SC"</span>,<span class='st'>"SD"</span>, <span class='st'>"TN"</span>, <span class='st'>"TX"</span>, <span class='st'>"UT"</span>, <span class='st'>"WV"</span>, <span class='st'>"WI"</span><span class='op'>)</span><span class='op'>)</span></span>
 <span></span>
-<span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></span></code></pre>
-</div>
-<pre><code>   origin_county_name origin_state year month       dest_county_name
-1 Autauga County (AL)           AL 2009     1 Montgomery County (AL)
-2 Autauga County (AL)           AL 2009     2 Montgomery County (AL)
-3 Autauga County (AL)           AL 2009     3 Montgomery County (AL)
-4 Autauga County (AL)           AL 2009     4 Montgomery County (AL)
-5 Autauga County (AL)           AL 2009     5 Montgomery County (AL)
-6 Autauga County (AL)           AL 2009     6 Montgomery County (AL)
-  dest_state dest_loc_id  dest_loc_name distance_origintodest
-1         AL       33860 Montgomery, AL               17.5935
-2         AL       33860 Montgomery, AL               17.5935
-3         AL       33860 Montgomery, AL               17.5935
-4         AL       33860 Montgomery, AL               17.5935
-5         AL       33860 Montgomery, AL               17.5935
-6         AL       33860 Montgomery, AL               17.5935</code></pre>
-</div>
-<p>Next, I created new variables called “pre_dobbs” and “post_ban” that state if the snapshot
-occured before or after <em>Dobbs</em> was decided or if it occurred before or after the post-Dobbs ban was enacted. To determine when a post-Dobbs ban went into effect, I used data collected by the Center for Reproductive Rights.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>data</span> <span class='op'>&lt;-</span> <span class='va'>data</span><span class='op'>|&gt;</span></span>
+<span><span class='va'>data</span> <span class='op'>&lt;-</span> <span class='va'>data</span><span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span><span class='op'>(</span><span class='va'>data</span>, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>year</span>, <span class='va'>month</span>, <span class='st'>"01"</span>, sep <span class='op'>=</span> <span class='st'>"-"</span><span class='op'>)</span><span class='op'>)</span>, <span class='st'>"%Y-%m-%d"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>pre_dobbs <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>date</span> <span class='op'>&lt;</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2022-06-01"</span><span class='op'>)</span>, <span class='st'>"Pre-Dobbs"</span>, <span class='st'>"Post-Dobbs"</span><span class='op'>)</span>,</span>
-<span>         post_ban <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>origin_state</span> <span class='op'>==</span> <span class='st'>"AL"</span> <span class='op'>&amp;</span> <span class='va'>date</span> <span class='op'>&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2022-06-01"</span><span class='op'>)</span> <span class='op'>|</span> </span>
+<span>         ban_status <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>origin_state</span> <span class='op'>==</span> <span class='st'>"AL"</span> <span class='op'>&amp;</span> <span class='va'>date</span> <span class='op'>&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2022-06-01"</span><span class='op'>)</span> <span class='op'>|</span> </span>
 <span>                            <span class='va'>origin_state</span> <span class='op'>==</span> <span class='st'>"AR"</span> <span class='op'>&amp;</span> <span class='va'>date</span> <span class='op'>&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2022-06-01"</span><span class='op'>)</span> <span class='op'>|</span> </span>
 <span>                            <span class='va'>origin_state</span> <span class='op'>==</span> <span class='st'>"FL"</span> <span class='op'>&amp;</span> <span class='va'>date</span> <span class='op'>&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2024-05-01"</span><span class='op'>)</span> <span class='op'>|</span> </span>
 <span>                            <span class='va'>origin_state</span> <span class='op'>==</span> <span class='st'>"GA"</span> <span class='op'>&amp;</span> <span class='va'>date</span> <span class='op'>&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2022-07-01"</span><span class='op'>)</span> <span class='op'>|</span> </span>
@@ -1638,53 +1612,108 @@ occured before or after <em>Dobbs</em> was decided or if it occurred before or a
 <span>                            <span class='va'>origin_state</span> <span class='op'>==</span> <span class='st'>"UT"</span> <span class='op'>&amp;</span> <span class='va'>date</span> <span class='op'>&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2022-06-01"</span><span class='op'>)</span> <span class='op'>|</span> </span>
 <span>                            <span class='va'>origin_state</span> <span class='op'>==</span> <span class='st'>"WV"</span> <span class='op'>&amp;</span> <span class='va'>date</span> <span class='op'>&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2022-09-01"</span><span class='op'>)</span> <span class='op'>|</span> </span>
 <span>                            <span class='va'>origin_state</span> <span class='op'>==</span> <span class='st'>"WI"</span> <span class='op'>&amp;</span> <span class='va'>date</span> <span class='op'>==</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/between.html'>between</a></span><span class='op'>(</span><span class='va'>date</span>,<span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2022-06-01"</span><span class='op'>)</span>,</span>
-<span>                            <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2023-09-01"</span><span class='op'>)</span><span class='op'>)</span>, <span class='st'>"Ban Enacted"</span>, <span class='st'>"No Ban"</span><span class='op'>)</span><span class='op'>)</span></span>
-<span></span>
-<span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></span></code></pre>
+<span>                            <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2023-09-01"</span><span class='op'>)</span><span class='op'>)</span>, <span class='st'>"Ban Enacted"</span>, <span class='st'>"No Ban"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>   origin_county_name origin_state year month       dest_county_name
-1 Autauga County (AL)           AL 2009     1 Montgomery County (AL)
-2 Autauga County (AL)           AL 2009     2 Montgomery County (AL)
-3 Autauga County (AL)           AL 2009     3 Montgomery County (AL)
-4 Autauga County (AL)           AL 2009     4 Montgomery County (AL)
-5 Autauga County (AL)           AL 2009     5 Montgomery County (AL)
-6 Autauga County (AL)           AL 2009     6 Montgomery County (AL)
-  dest_state dest_loc_id  dest_loc_name distance_origintodest
-1         AL       33860 Montgomery, AL               17.5935
-2         AL       33860 Montgomery, AL               17.5935
-3         AL       33860 Montgomery, AL               17.5935
-4         AL       33860 Montgomery, AL               17.5935
-5         AL       33860 Montgomery, AL               17.5935
-6         AL       33860 Montgomery, AL               17.5935
-        date pre_dobbs post_ban
-1 2009-01-01 Pre-Dobbs   No Ban
-2 2009-02-01 Pre-Dobbs   No Ban
-3 2009-03-01 Pre-Dobbs   No Ban
-4 2009-04-01 Pre-Dobbs   No Ban
-5 2009-05-01 Pre-Dobbs   No Ban
-6 2009-06-01 Pre-Dobbs   No Ban</code></pre>
 </div>
-<p>The following is a graph depicting the average distance to the nearest abortion provider by state in the 2020s. Each state is depicted in a different color. However, my computer crashed when I tried to manually choose colors that looked more varied. I have also added a vertical line at June 2022, when Dobbs v. Jackson ruling was announced.</p>
+<p>How far does the average person need to travel to receive an abortion in the United States? The dataset takes snapshots of the average distance to the nearest abortion provider for each county in the United States for each month from 2015-2025, providing thousands of data points. I first plot through a histogram that counts how many times the nearest provider per county in affected states is within a certain mile range. This allows us to see that the majority of counties had an abortion provider within 125 miles during this time.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>data</span> <span class='op'>&lt;-</span> <span class='va'>data</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>date</span> <span class='op'>&gt;=</span> <span class='st'>"2015-01-01"</span><span class='op'>)</span></span>
+<span><span class='va'>mean_dist</span> <span class='op'>&lt;-</span> <span class='va'>data</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping<span class='op'>=</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>distance_origintodest</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span><span class='st'>"Distance in Miles to Nearest Abortion Provider"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Number of Counties"</span>,</span>
+<span>       title <span class='op'>=</span> <span class='st'>"Mean Distance to the Nearest Abortion Provider for Counties from 2015-2025"</span>,</span>
+<span>       subtitle <span class='op'>=</span> <span class='st'>"For Counties in States with Post-Dobbs Bans From Every Month"</span><span class='op'>)</span></span>
 <span></span>
-<span><span class='va'>data_2020s</span> <span class='op'>&lt;-</span><span class='va'>data</span> <span class='op'>|&gt;</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span> <span class='op'>(</span><span class='va'>date</span> <span class='op'>&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2020-01-01"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State <span class='op'>=</span> <span class='va'>origin_state</span><span class='op'>)</span></span>
-<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>data_2020s</span>, mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>date</span>,</span>
-<span>                     y <span class='op'>=</span> <span class='va'>distance_origintodest</span>, color <span class='op'>=</span> <span class='va'>State</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>group <span class='op'>=</span> <span class='st'>"State"</span>, method <span class='op'>=</span> <span class='st'>"loess"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_vline</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2022-06-01"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Date"</span>,</span>
-<span>       y <span class='op'>=</span> <span class='st'>"Distance to Nearest Abortion Provider in Miles"</span>,</span>
-<span>       title <span class='op'>=</span> <span class='st'>"Average Distance to Nearest Abortion Provider by State"</span><span class='op'>)</span></span></code></pre>
+<span><span class='va'>mean_dist</span></span></code></pre>
 </div>
-<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" alt="" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-2-1.png" alt="" width="624" /></p>
 </div>
-<ul>
-<li>scale_color_manual(values = c(AL = “darkred”, AR = “firebrick2”, FL = “darkorange2”, GA = “tan”, IA = “goldenrod”, ID = “gold1”, IN = “lightgoldenrod”, KY = “darkolivegreen2”, LA = “forestgreen”, MS = “darkolivegreen”, NC = “turquoise4”, ND = “cyan2”, NE = “cadetblue1”, OK = “royalblue1”, SC = “darkslateblue”, SD = “mediumpurple1”, TN = “darkorchid3”, TX = “magenta3”, UT = “deeppink2”, WI =“pink”, WV = “saddlebrown”))</li>
-</ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>If my hypothesis is correct, states that enacted such restrictions will have a measurable increase in average distance to the nearest provider, while states that did not enact such laws will have no or a lesser increase in average distance. If my hypothesis is incorrect, then the average distance will be either equal to or lesser to the change in distance when compared to states that did not enact restrictive abortion bans. This will be determined by running a linear regression model which will use the available data to estimate how a change in abortion ban status will change the mean distance to the nearest abortion provider nation-wide. The model will produce two values: an intercept and a slope. The intercept is the estimated average distance to the nearest abortion provider when a post-<em>Dobbs</em> abortion ban has been enacted. The slope coefficient is the change in the distance to the nearest abortion provider for every unit increase. As the state of abortion bans is a binary variable, this roughly translates to the difference between the distance to the nearest provider when such a ban has and has not been enacted. If my hypothesis is correct, the slope coefficient for the variable “No Ban” will be negative as the estimated distance will decrease.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://yihui.org/knitr/'>knitr</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://broom.tidymodels.org/'>broom</a></span><span class='op'>)</span></span>
+<span><span class='va'>regression</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>distance_origintodest</span> <span class='op'>~</span> <span class='va'>ban_status</span>, data <span class='op'>=</span> <span class='va'>data</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>regression</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span>, col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Term"</span>, <span class='st'>"Coefficient"</span>, <span class='st'>"Standard Error"</span>, <span class='st'>"Statistic"</span>, <span class='st'>"P-Value"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Term</th>
+<th style="text-align: right;">Coefficient</th>
+<th style="text-align: right;">Standard Error</th>
+<th style="text-align: right;">Statistic</th>
+<th style="text-align: right;">P-Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">210.32</td>
+<td style="text-align: right;">0.43</td>
+<td style="text-align: right;">487.29</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ban_statusNo Ban</td>
+<td style="text-align: right;">-120.54</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">-244.39</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The linear model regression results in the above data. The intercept is 210.32, meaning that when the value of “No Ban” is zero, or in other words, when a post-<em>Dobbs</em> ban is in place, the mean distance to the nearest abortion provider is 210.32 miles. As the value of the variable ban_status increases by one unit, or in this case goes from “No Ban” to “Ban Enacted,” the distance will decrease to the nearest abortion provider will decrease by 120.54 miles. Or, in other words: the average distance from any United States county to the nearest abortion provider is 89.78 miles for counties in states that have not enacted an abortion ban after the <em>Dobbs v. Jackson</em> ruling and 210.32 miles for counties in states that have enacted such a ban.</p>
+<p>These values are statistically significant as the p-value is 0 for both the intercept and slope. The p-value is the probability of observing data more extreme than our data, assuming that there is no relationships between variables. This assumption is called a null hypothesis. A p-value of 0 means that data this extreme would occur in 0% of all possible cases if the null is true, meaning there is no relationship between variables. This is considered a highly significant figure, making it highly improbable for this data to occur by chance.</p>
+<p>The difference in average distance to the nearest abortion provider can be visualized through a boxplot. The following graph shows the median distance to the nearest abortion provider as well as the interquartile range, which shows the spread of the middle 50% of values in a data group. This graph reveals that the the median distance to the nearest abortion provider in counties under the jurisdiction of a post-<em>Dobbs</em> ban is 159.62 miles, while 50% of all such counties are between 140 and 300 miles to the closest abortion provider. On the other hand, counties not under the jurisdiction of a post-<em>Dobbs</em> ban have a median of 63.99 miles and a much smaller interquartile range of approximately 50 to 100 miles. The counties in states without post-<em>Dobbs</em> bans have a greater quantity and spread of outliers, with some travel distances spanning up to over 800 miles away.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ban_change</span> <span class='op'>&lt;-</span> <span class='va'>data</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ban_status</span>,</span>
+<span>                       y <span class='op'>=</span> <span class='va'>distance_origintodest</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Status of Abortion Ban"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Nearest Abortion Provider in Miles"</span>,</span>
+<span>       title <span class='op'>=</span> <span class='st'>"Mean Distance to Nearest Abortion Provider in Miles"</span>,</span>
+<span>       subtitle <span class='op'>=</span> <span class='st'>"Comparing Counties without Abortion Bans to Dobbs v. Jackson Bans"</span><span class='op'>)</span></span>
+<span><span class='va'>ban_change</span></span></code></pre>
+</div>
+<img src="index_files/figure-html5/unnamed-chunk-4-1.png" alt="" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>data</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>ban_status</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>distance_origintodest</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span>, col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Ban Status"</span>, <span class='st'>"Median Distance to Nearest Abortion Provider"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Ban Status</th>
+<th style="text-align: right;">Median Distance to Nearest Abortion Provider</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Ban Enacted</td>
+<td style="text-align: right;">159.62</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">No Ban</td>
+<td style="text-align: right;">73.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Determining causality means estimating a counterfactual, a reality that does not exist. As it is impossible to know the distance to the nearest abortion provider in states that enacted post-<em>Dobbs</em> bans if they had not enacted said bans, we must make an inference.Hence, the use of a before-and-after design here: comparing the distance to the nearest provider before the treatment of the ban was enacted. This is one widely accepted form of observational study meant to mimic a randomized control study. As such, we can assume a causal inference.</p>
+<p>In conclusion, states that enacted an abortion ban after the SCOTUS ruling of <em>Dobbs v. Jackson</em> had a significant increase in the average distance to the nearest abortion provider. The linear regression model noted a 120.54 mile increase after the bans were enacted. The before-and-after design ensures a causal inference and the p-value of 0 is a highly significant figure, meaning there is little possibility that this occured by chance. I cannot think of any plausible confounder that would cause both abortion bans to be enacted and the average distance to the nearest abortion provider to increase. However, the analysis could be complicated by turning it into a difference in differences design, comparing the change in average distance before and after <em>Dobbs</em> for states that both did and did not enact bans. I could not figure out how to cleanly manipulate this data to set up this design. Another variable that may influence this analysis is the geography of states with abortion bans: states both with and without abortion bans tend to be clustered together. I am curious how this would influence the results.</p>
+<p>Note: David recommended that I note that I added the date that post-<em>Dobbs</em> abortion bans for each of the 21 states by hand as a fulfillment for the “above and beyond” point. Additionally, I taught myself how to convert the dates from separate “month” and “year” columns prior to learning it in class.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
